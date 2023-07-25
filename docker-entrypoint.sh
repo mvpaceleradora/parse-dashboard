@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "$DATABASE_URL" ]; then
-    MB_DB_CONNECTION_URI="$DATABASE_URL"
+    export MB_DB_CONNECTION_URI="$DATABASE_URL"
 fi
 
 if [ "$PORT" ]; then
@@ -17,7 +17,7 @@ JAVA_OPTS+=" -Xverify:none"                    # Skip bytecode verification, the
 JAVA_OPTS+=" -XX:+UseG1GC"                     # G1GC seems to use slightly less memory in my testing...
 JAVA_OPTS+=" -XX:+UseStringDeduplication"      # Especially when used in combination with string deduplication
 JAVA_OPTS+=" -Xss512k"
-JAVA_OPTS+=" -Xmx248m"
+JAVA_OPTS+=" -Xmx200m"
 JAVA_OPTS+=" -XX:+UseCGroupMemoryLimitForHeap"
 JAVA_OPTS+=" -XX:NativeMemoryTracking=detail"
 JAVA_OPTS+=" -XX:+UnlockDiagnosticVMOptions"
