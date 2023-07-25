@@ -16,6 +16,8 @@ JAVA_OPTS+=" -XX:+UseCompressedClassPointers"  # Same as above. See also http://
 JAVA_OPTS+=" -Xverify:none"                    # Skip bytecode verification, the Heroku buildpack comes from us so it's already verified. Speed up launch slightly
 JAVA_OPTS+=" -XX:+UseG1GC"                     # G1GC seems to use slightly less memory in my testing...
 JAVA_OPTS+=" -XX:+UseStringDeduplication"      # Especially when used in combination with string deduplication
+JAVA_OPTS+=" -XmX350m"
+JAVA_OPTS+=" -Xss512k"
 
 JAVA_OPTS+=" -server"                  # Run in server mode. This is the default for 64-bit JVM
 JAVA_OPTS+=" -Djava.awt.headless=true" # don't try to start AWT. Not sure this does anything but better safe than wasting memory
